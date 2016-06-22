@@ -11,6 +11,7 @@ randomgraphdict = {}
 ints=[]
 shortest_distance=[[0,1]]
 clustering_coeff = []
+random_graph2 = {}
 #Adjacency matrix
 adj_matrix = []
 def get_coordinates(filename):
@@ -68,10 +69,32 @@ def get_degree_matrix(matrix):
 def get_laplacian_matrix(matrix1, matrix2):
 	return numpy.subtract(matrix1, matrix2)
 
+def get_random_graph_2(graph):
+	count = 0
+	while count < 100:
+		n1 = randint(1,len(names))
+		n2 = randint(1,len(names))
+		if n1 != n2:
+			ind3 = randint(0,len(graph[n1])-1)
+			ind4 = randint(0,len(graph[n2])-1)
+			n3 = graph[n1][ind3]
+			n4 = graph[n2][ind4]
+			if n3 != n4:
+				graph[n1].remove(n3)
+				graph[n3].remove(n1)
+				graph[n2].remove(n4)
+				graph[n4].remove(n2)
+				graph[n1].append(n4)
+				graph[n4].append(n1)
+				graph[n2].append(n3)
+				graph[n3].append(n2)
+				count += 1
+	return graph
+
+
 def betweenness(i,num_short_paths):
 	if i <= len(names):
 		return num_short_paths[i]
-
 
 def shortest_path():
 	ans = 0
@@ -264,10 +287,15 @@ def main():
 	lap_matrix = get_laplacian_matrix(deg_matrix, adj_matrix)
 	adj_value,adj_vec =  numpy.linalg.eigh(adj_matrix)
 	lap_value,lap_vec = numpy.linalg.eigh(lap_matrix)
-	print "For adjacency matrix\nLargest eigen value = " + str(adj_value[len(names)-1])
+	"""print "For adjacency matrix\nLargest eigen value = " + str(adj_value[len(names)-1])
 	print "\nCorresponding eigen vector = " + str(adj_vec[len(names)-1])
 	print "For laplacian matrix\nLargest eigen value = " + str(lap_value[len(names)-1])
-	print "\nCorresponding eigen vector = " + str(lap_vec[len(names)-1])
+	print "\nCorresponding eigen vector = " + str(lap_vec[len(names)-1])"""
+	random_graph2 = graphdict.copy()
+	random_graph2 = get_random_graph_2(random_graph2)
+	print random_graph2
+
+
 
 if __name__ == '__main__':
 	main()
