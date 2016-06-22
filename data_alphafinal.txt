@@ -1,0 +1,120 @@
+threshold=4.5
+average degree = 2.15609756098
+avg clustering coeff  = 0.00406504065041
+edges = 221
+average shortest path = 22.9582496413
+
+
+
+threshold=5.0
+average degree = 2.61463414634
+avg clustering coeff  = 0.0211382113821
+edges = 268
+average shortest path = 10.4129603061
+
+
+
+threshold=5.5
+average degree = 3.8
+avg clustering coeff  = 0.256902826171
+edges = 389
+average shortest path = 8.33151602104
+
+
+
+threshold=6.0
+average degree = 4.91707317073
+avg clustering coeff  = 0.485008094886
+edges = 504
+average shortest path = 7.26059301769
+
+
+
+threshold=6.5
+average degree = 6.20487804878
+avg clustering coeff  = 0.537432865238
+edges = 636
+average shortest path = 6.04069823051
+
+
+
+threshold=7.0
+average degree = 7.79512195122
+avg clustering coeff  = 0.541262775165
+edges = 799
+average shortest path = 5.19818268771
+
+
+
+threshold=7.5
+average degree = 8.77073170732
+avg clustering coeff  = 0.560003040957
+edges = 899
+average shortest path = 4.82300334768
+
+
+
+threshold=8.0
+average degree = 9.47317073171
+avg clustering coeff  = 0.570624458437
+edges = 971
+average shortest path = 4.60545193687
+
+
+
+threshold=8.5
+average degree = 10.6926829268
+avg clustering coeff  = 0.587336770263
+edges = 1096
+average shortest path = 4.34705882353
+
+
+
+threshold=9.0
+average degree = 12.0390243902
+avg clustering coeff  = 0.591283802383
+edges = 1234
+average shortest path = 4.05657580105
+
+
+
+threshold=9.5
+average degree = 13.7073170732
+avg clustering coeff  = 0.594413266762
+edges = 1405
+average shortest path = 3.79956958393
+
+
+
+threshold=10.0
+average degree = 16.2634146341
+avg clustering coeff  = 0.602815907104
+edges = 1667
+average shortest path = 3.49526542324
+
+
+
+threshold=10.5
+average degree = 18.9658536585
+avg clustering coeff  = 0.61260428295
+edges = 1944
+average shortest path = 3.20836920134
+
+
+
+threshold=11.0
+average degree = 21.2585365854
+avg clustering coeff  = 0.623222533109
+edges = 2179
+average shortest path = 3.04108082257
+
+
+
+threshold=11.5
+average degree = 23.2487804878
+avg clustering coeff  = 0.633270707782
+edges = 2383
+average shortest path = 2.93486370158
+
+
+

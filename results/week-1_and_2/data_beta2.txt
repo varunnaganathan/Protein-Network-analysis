@@ -1,0 +1,59 @@
+RESULTS FOR THE C-BETA GRAPH
+
+
+threshold=4
+average degree = 0.347826086957
+avg clustering coeff  = More than one connected component
+edges = 8
+
+
+
+threshold=5
+average degree = 1.0
+avg clustering coeff  = More than one connected component
+edges = 23
+
+
+
+threshold=6
+average degree = 4.82608695652
+avg clustering coeff  = 0.360869565217
+edges = 111
+
+
+
+threshold=7
+average degree = 6.52173913043
+avg clustering coeff  = 0.435286090721
+edges = 150
+
+
+
+threshold=8
+average degree = 8.69565217391
+avg clustering coeff  = 0.610104870974
+edges = 200
+
+
+
+threshold=9
+average degree = 11.0869565217
+avg clustering coeff  = 0.647483947119
+edges = 255
+
+
+
+threshold=10
+average degree = 13.9130434783
+avg clustering coeff  = 0.667630057666
+edges = 320
+
+
+
+threshold=11
+average degree = 17.4782608696
+avg clustering coeff  = 0.700663481427
+edges = 402
+
+
+

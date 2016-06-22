@@ -1,0 +1,26 @@
+﻿NON COVALENT INTERACTIONS IN PROTEINS
+
+1.Electrostatic interactions - Electrostatic interactions are between and among cations and anions, species with formal charge of ...-2,-1,+1,+2... Electrostatic interactions can be either attractive or repulsive, depending on the signs of the charges. Like charges repel. Unlike charges attract.
+Distance range – 3.5   to  5.5 Armstrong
+
+2.Vander waals interactions - the residual attractive or repulsive forces between molecules or atomic groups that do not arise from a covalent bond, or electrostatic interaction of ions or of ionic groups with one another or with neutral molecules.
+Distance range – Long Range Forces.Can be effective from large distances (> 10 nanometers) down to interatomic species.Approximately 3.4 Armstrong in B-DNA.
+
+3.Hydrogen bonding - non-covalent bonds that occur when a donor atom donates its covalently bonded hydrogen atom to an electronegative acceptor atom.Mean donor acceptor diastances are close to 3 Armstrong.We can cetegorize hbonds with donor-acceptor distances of 2.2-2.5 Å as "strong, mostly covalent", 2.5-3.2 Å as "moderate, mostly electrostatic", and 3.2-4.0 Å as "weak, electrostatic"
+
+4.Hydrophobic effects - When proteins unfold, then the inner core nw interacts with the outer surrounding(water).It generally shield electtronic species from one another.Stronger magnitude than covalent. Very long range interactions with the distance range being from 1 to 10 nanometers.
+
+References:
+Wikipedia
+http://proteopedia.org/wiki/index.php/Hydrogen_bonds#Distances_and_Energies
+http://ww2.chemistry.gatech.edu/~lw26/structure/molecular_interactions/mol_int.html#B
+
+
+consider diff proteins between 6.5 - 8
+find vanderwaal radii for diff amino acids
+so vanderwaal dist = vanderwaal radii for amino acid * 2 +(above distance)
+compare this with the dist given in vmd or rasmol
+find out best suited cutoff
+for c-beta , this will  be 1.5 smaller than c-alpha
+further work will be sent later
+

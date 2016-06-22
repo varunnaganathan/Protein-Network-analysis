@@ -1,0 +1,21 @@
+REVIEW FOR THE WORK DONE
+
+Work done:
+
+Implemented the C-beta graph too.
+Implemented the Clustering coefficient calculation for both C-alpha and C-beta(same for both).
+Wrote a script to store results for varying threshold values into external files given to the calpha and the cbeta graph programs.
+Observed the results and drew few inferences mentioned below.
+
+
+Results Obtained:
+I compared the results obtained from both the graphs (C-alpha and the C-beta).These basically included parameters like nodes, average degree, no of edges and the clustering coefficient.
+
+Both the C-alpha and the C-beta provide a more reduced representation of a protein structure than its full 3D structure. The advantage is that they remain the same irrespective of the translations and rotations.Also due to the 3-D structure and folding of the protein, the adjacent amino acids in the sequence are not always the actual neighbours in the graph or contact network.
+
+Some abstract ideas visible from the data is that the C-alpha graph is an excellent means of obtaining large amount of information of the protein network with quite less computation.It however ignores few vital factors such as the orientation of the side chain R groups attached to the amino acids.Since the backbone of the amino acid is quite stable and the major interactions between the amino acids are due to the R group, the C-alpha graph may lead to reduced correctness and preciseness in terms of the connectedness and the clustering capability of the protein under consideration.
+
+In such cases , the Cbeta is a better measure of protein interactions as the distance function considered is between the C-beta atoms which are the major hubs of interaction between the amino acids.As we can see from the 2 result files for C-alpha and the C-beta graph respectively, for thresholds like 4-5 Armstrong , while the C-alpha graph still shows some interaction(very low clustering coefficient), the C-beta graph shows the network divided into multiple connected components, thus disabling us from the spectral params like clustering coefficient.So although the hubs of interaction in the amino acids(the C-beta atoms) were not interacting well, the C-alpha seemed to ignore such considerations.Even for other thresholds like 6 and 7 Armstrong, we see considerable differences in the C-alpha and C-beta clustering coefficients.
+
+Now if we compare the values obtained for any one of the contact networks(C-alpha or C-beta), we see that as we increase the threshold, we can see considerable increase in the edges,average degree and the clustering coefficients.However at higher thresholds for the distance, the non covalent interactions like H-bonds and electrostatic interactions cease to exist.Thus even though the graphs show high connectedness and high localized density, the actual picture is not the same due to lack of interactions at such large distances.There also exists a limit on the interaction radii for each atom considered due to te folded 3-D struture of the protein.Similarly at very low thresholds, we see very few interactions between the C-alpha or C-beta atoms of the amino acids.Keeping such low thresholds is also not correct as several interactions are ignored.
+Thus overall, the threshold of 7-8 Armstrong seems to provide a consistent picture.(atleast for the proteins considered till now)

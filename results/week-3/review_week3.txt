@@ -1,0 +1,14 @@
+﻿Work Review – Week 3
+
+1.Made tweaks to the graph as suggested and joint the protein backbone irrespective of cutoff distances.
+
+2.Implemented the Shortest path calculation for C-alpha and C-beta graphs.
+
+3.Plotted graphs like “Clustering coefficient vs cutoff” , “Average degree vs cutoffs” and “Average shortest path vs cutoff” for cutoffs ranging from 4.5 – 11.5 Amstrong with difference of 0.5 Armstrong .(Readings and plot already sent)
+
+4.Read about the 2 ways to find out the clustering coefficient as asked by you – (The triangle method for the global clustering coefficient and the avg of clustering coefficient for each node)
+
+5.Read about the various non covalent interactions among proteins and their distance ranges.(Readings attached in a separate file)
+
+
+

@@ -1,0 +1,56 @@
+threshold=4
+average degree = 1.95652173913
+avg clustering coeff  = 0.0
+edges = 45
+
+
+
+threshold=5
+average degree = 2.30434782609
+avg clustering coeff  = 0.0130434782609
+edges = 53
+
+
+
+threshold=6
+average degree = 5.26086956522
+avg clustering coeff  = 0.537819185645
+edges = 121
+
+
+
+threshold=7
+average degree = 7.60869565217
+avg clustering coeff  = 0.603270280444
+edges = 175
+
+
+
+threshold=8
+average degree = 8.95652173913
+avg clustering coeff  = 0.61366887943
+edges = 206
+
+
+
+threshold=9
+average degree = 11.7826086957
+avg clustering coeff  = 0.640231045932
+edges = 271
+
+
+
+threshold=10
+average degree = 14.8695652174
+avg clustering coeff  = 0.680362647632
+edges = 342
+
+
+
+threshold=11
+average degree = 18.5217391304
+avg clustering coeff  = 0.715560748644
+edges = 426
+
+
+

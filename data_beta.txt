@@ -1,0 +1,111 @@
+PDB USED - 1SE8.PDB
+NODES = 185
+C- BETA GRAPH DATA
+
+
+
+threshold=4.5
+average degree = 1.31351351351
+avg clustering coeff  = 0.013963963964
+edges = 121
+
+
+
+threshold=5.0
+average degree = 1.58918918919
+avg clustering coeff  = 0.0152252252252
+edges = 147
+
+
+
+threshold=5.5
+average degree = 2.47027027027
+avg clustering coeff  = 0.0705405405405
+edges = 228
+
+
+
+threshold=6.0
+average degree = 4.0
+avg clustering coeff  = 0.165495495495
+edges = 370
+
+
+
+threshold=6.5
+average degree = 4.94594594595
+avg clustering coeff  = 0.263322608323
+edges = 457
+
+
+
+threshold=7.0
+average degree = 6.06486486486
+avg clustering coeff  = 0.3841999142
+edges = 561
+
+
+
+threshold=7.5
+average degree = 7.51351351351
+avg clustering coeff  = 0.480205920206
+edges = 695
+
+
+
+threshold=8.0
+average degree = 8.77297297297
+avg clustering coeff  = 0.515731955732
+edges = 811
+
+
+
+threshold=8.5
+average degree = 9.9027027027
+avg clustering coeff  = 0.541982760659
+edges = 916
+
+
+
+threshold=9.0
+average degree = 10.9621621622
+avg clustering coeff  = 0.552153595969
+edges = 1014
+
+
+
+threshold=9.5
+average degree = 12.1135135135
+avg clustering coeff  = 0.561051256152
+edges = 1120
+
+
+
+threshold=10.0
+average degree = 13.627027027
+avg clustering coeff  = 0.565943905339
+edges = 1260
+
+
+
+threshold=10.5
+average degree = 16.0054054054
+avg clustering coeff  = 0.581413272297
+edges = 1480
+
+
+
+threshold=11.0
+average degree = 18.7081081081
+avg clustering coeff  = 0.596701315614
+edges = 1730
+
+
+
+threshold=11.5
+average degree = 21.4162162162
+avg clustering coeff  = 0.611673508565
+edges = 1981
+
+
+
