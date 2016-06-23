@@ -1,17 +1,17 @@
 import sys
 from Queue import *
 from random import *
+import copy
 import numpy
 x=[];
 z=[];
 y=[];
 names=[]
-graphdict={}
 randomgraphdict = {}
 ints=[]
 shortest_distance=[[0,1]]
 clustering_coeff = []
-random_graph2 = {}
+
 #Adjacency matrix
 adj_matrix = []
 def get_coordinates(filename):
@@ -33,7 +33,7 @@ def get_coordinates(filename):
 def find_largest_component():
 	pass
 
-def compute_shortest_path(i,num_short_paths):
+def compute_shortest_path(i,num_short_paths,graphdict):
 	queue = Queue()
 	distance = []
 	for j in range(len(names)+1):
@@ -56,13 +56,13 @@ def get_zero_matrix():
 	return matrix
 
 
-def get_adjacency_matrix(matrix):
+def get_adjacency_matrix(matrix,graphdict):
 	for i in graphdict.keys():
 		for j in graphdict[i]:
 			matrix[i-1][j-1] = 1
 			matrix[j-1][i-1] = 1
 
-def get_degree_matrix(matrix):
+def get_degree_matrix(matrix,graphdict):
 	for i in graphdict.keys():
 		matrix[i-1][i-1] = len(graphdict[i])
 
@@ -71,7 +71,7 @@ def get_laplacian_matrix(matrix1, matrix2):
 
 def get_random_graph_2(graph):
 	count = 0
-	while count < 100:
+	while count < 200:
 		n1 = randint(1,len(names))
 		n2 = randint(1,len(names))
 		if n1 != n2:
@@ -79,7 +79,7 @@ def get_random_graph_2(graph):
 			ind4 = randint(0,len(graph[n2])-1)
 			n3 = graph[n1][ind3]
 			n4 = graph[n2][ind4]
-			if n3 != n4:
+			if n3 != n4 and n4 not in graph[n1] and n3 not in graph[n2]:
 				graph[n1].remove(n3)
 				graph[n3].remove(n1)
 				graph[n2].remove(n4)
@@ -89,7 +89,9 @@ def get_random_graph_2(graph):
 				graph[n2].append(n3)
 				graph[n3].append(n2)
 				count += 1
+
 	return graph
+	
 
 
 def betweenness(i,num_short_paths):
@@ -108,42 +110,42 @@ def shortest_path():
 def distance(x1, y1, z1, x2, y2, z2):
 	return float((((z2-z1)*(z2-z1)) + ((y2-y1)*(y2-y1)) +((x2-x1)*(x2-x1)))**(0.5))
 
-def construct_graph():
+def construct_graph(graphdict):
 	threshold = sys.argv[2]
 	for i in range(len(names)):
 		for j in range(len(names)):
 			if i==j:
 				continue;
 			if distance(x[i],y[i],z[i],x[j],y[j],z[j]) <= float(threshold):
-				add_edge(i+1,j+1)
+				add_edge(i+1,j+1,graphdict)
 				#print "yes"
 	for i in range(1,len(names)):
 		if i in graphdict.keys():
 			if i+1 not in graphdict[i] and i+1 <= len(names):
-				add_edge(i,i+1)
+				add_edge(i,i+1,graphdict)
 		else:
 			graphdict[i] = [i+1]
 
-def add_edge(i, j):
+def add_edge(i, j,graphdict):
 	if i in graphdict.keys():
 		graphdict[i].append(j)
 	else:
 		graphdict[i] = [j]
 
 
-def print_graph(nodemap):
+def print_graph(nodemap,graphdict):
 	for i in range(len(names)+1):
 		if i in graphdict.keys():
 			print str(i) + "     "
 			print graphdict[i]
 
-def calculate_average_degree():
+def calculate_average_degree(graphdict):
 	degreesum = 0;
 	for i in graphdict.keys():
 		degreesum += len(graphdict[i])
 	return float(float(degreesum)/float(len(x)))
 
-def find_clustering_coeff(i):
+def find_clustering_coeff(i,graphdict):
 	cnt = 0
 	if i not in graphdict.keys():
 		return
@@ -162,7 +164,7 @@ def average_clustering_coeff():
 	n = len(names)
 	return float(float(total)/float(n))
 
-def find_number_edges():
+def find_number_edges(graphdict):
 	edges = 0
 	for i in graphdict.keys():
 		edges += len(graphdict[i])
@@ -170,20 +172,24 @@ def find_number_edges():
 
 def calculate_degree_distribution(graph):
 	deg_distribution = []
+	print "DEGREE\t\tDEGREE DISTR\n\n"
 	for k in range(2,16):
 		nodes = 0
 		for i in graph.keys():
 			if len(graph[i]) == k:
 				nodes += 1
 		deg_distribution.append(float(float(nodes)/float(len(names))))
-	return deg_distribution
+		print str(k) + "\t\t" + str(float(float(nodes)/float(len(names))))
+	#return deg_distribution
 
 #Gives errors at some places
 def calculate_clust_coeff_distribution(graph):
 	clust_coeff_distr = []
 	nodes = 0
+	print "DEGREE\t\tCLUSTERING COEFF DISTR\n\n"
 	clust_coeff_sum = 0
 	for k in range(2,16):
+		clust_coeff_sum = 0
 		for i in range(1,len(names)+1):
 			if i in graph.keys():
 				if len(graph[i]) == k:
@@ -192,9 +198,11 @@ def calculate_clust_coeff_distribution(graph):
 						clust_coeff_sum += float(clustering_coeff[i-1])
 		if nodes == 0:
 			clust_coeff_distr.append(0)
+			print str(k) + "\t\t" + str(0)
 		else:
 			clust_coeff_distr.append(float(float(clust_coeff_sum)/float(nodes)))
-	return clust_coeff_distr
+			print str(k) + "\t\t" + str(float(float(clust_coeff_sum)/float(nodes)))
+	#return clust_coeff_distr
 
 
 def closeness(nodes_closeness):
@@ -208,7 +216,7 @@ def closeness(nodes_closeness):
 		else:
 			nodes_closeness[i] = float(float(1)/float(ans))
 
-def construct_random_graph():
+def construct_random_graph(graphdict):
 	num_nodes = len(names)
 	num_edges = 0
 	for i in graphdict.keys():
@@ -232,11 +240,14 @@ def construct_random_graph():
 
 def main():
 	nodemap={}
+	random_graph = {}
+	random_graph2 = {}
+	graphdict={}
 	filename = sys.argv[1]
 	get_coordinates(str(filename))
-	construct_graph()
+	construct_graph(graphdict)
 	print "generating random graph"
-	construct_random_graph()
+	construct_random_graph(graphdict)
 	print "\n\n\n"
 	#To store the closeness centrality of each node
 	nodes_closeness = []
@@ -248,15 +259,15 @@ def main():
 		nodes_closeness.append(0)
 	#Computing shortest path for each node to all other nodes
 	for i in range(1,len(names)+1):
-		compute_shortest_path(i,num_short_paths)
+		compute_shortest_path(i,num_short_paths,graphdict)
 	#print "num short path = " + str(num_short_paths)
 	#print_graph(nodemap)
 	print "nodes = " + str(len(names))
-	print "average degree = " + str(calculate_average_degree())
+	print "average degree = " + str(calculate_average_degree(graphdict))
 	for i in range(len(names)+1):
-		find_clustering_coeff(i+1)
+		find_clustering_coeff(i+1,graphdict)
 	print "avg clustering coeff  = " + str(average_clustering_coeff())
-	print "edges = " + str(find_number_edges())
+	print "edges = " + str(find_number_edges(graphdict))
 	print "average shortest path = " + str(shortest_path())
 	print "\n\n"
 	"""print "Do you wish to calculate degree distribution?\nEnter 1 to calculate\n"
@@ -268,7 +279,7 @@ def main():
 	deg_dist = input()
 	if deg_dist == 1:
 		print "clustering coeff dist = " + str(calculate_clust_coeff_distribution(graphdict))
-		#print "clustering coeff dist for random graph = " + str(calculate_clust_coeff_distribution(randomgraphdict))
+		print "clustering coeff dist for random graph = " + str(calculate_clust_coeff_distribution(randomgraphdict))
 	print "Do you wish to display betweenness centrality of all nodes?\nPress 1 to print"
 	deg_dist = input()
 	if deg_dist == 1:
@@ -279,21 +290,38 @@ def main():
 		closeness(nodes_closeness)
 		print nodes_closeness
 	print "\n\n\n"""
-	#print graphdict"""
-	adj_matrix = get_zero_matrix()
+	print "degree dist for protein graph = \n"
+	calculate_degree_distribution(graphdict)
+
+	print "clustering coeff dist for protein graph = \n"
+	calculate_clust_coeff_distribution(graphdict)
+
+	"""adj_matrix = get_zero_matrix()
 	deg_matrix = get_zero_matrix()
-	get_adjacency_matrix(adj_matrix)
-	get_degree_matrix(deg_matrix)
+	get_adjacency_matrix(adj_matrix,graphdict)
+	get_degree_matrix(deg_matrix,graphdict)
 	lap_matrix = get_laplacian_matrix(deg_matrix, adj_matrix)
 	adj_value,adj_vec =  numpy.linalg.eigh(adj_matrix)
 	lap_value,lap_vec = numpy.linalg.eigh(lap_matrix)
-	"""print "For adjacency matrix\nLargest eigen value = " + str(adj_value[len(names)-1])
+	print "For adjacency matrix\nLargest eigen value = " + str(adj_value[len(names)-1])
 	print "\nCorresponding eigen vector = " + str(adj_vec[len(names)-1])
 	print "For laplacian matrix\nLargest eigen value = " + str(lap_value[len(names)-1])
 	print "\nCorresponding eigen vector = " + str(lap_vec[len(names)-1])"""
-	random_graph2 = graphdict.copy()
-	random_graph2 = get_random_graph_2(random_graph2)
+	random_graph = copy.deepcopy(graphdict)
+	print graphdict
+	print "\n\n"
+	random_graph2 = get_random_graph_2(random_graph)
 	print random_graph2
+	print "\n\n"
+	print graphdict
+
+	
+	print "degree dist for random graph = \n"
+	calculate_degree_distribution(random_graph2)
+	
+	print "clustering coeff dist for random graph = \n"
+	calculate_clust_coeff_distribution(random_graph2)
+
 
 
 

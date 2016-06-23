@@ -6,7 +6,7 @@ def main():
 	for i in range(9,24):
 		value = float((float(i)/float(2.0)))
 		string0 = "echo " + "threshold=" + str(value) + " >> " + sys.argv[2]
-		string1  = "python " +  sys.argv[1] + " 1se8.pdb " + str(value) + " >> " + sys.argv[2]
+		string1  = "python " +  sys.argv[1] + " 1se8.pdb " + str(7) + " >> " + sys.argv[2]
 		string2 = "echo " + '\n' + " >> " + sys.argv[2]
 		os.system(string0)
 		os.system(string1)
