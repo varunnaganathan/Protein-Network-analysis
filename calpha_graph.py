@@ -11,7 +11,7 @@ randomgraphdict = {}
 ints=[]
 shortest_distance=[[0,1]]
 clustering_coeff = []
-
+clustering_coeff_random = []
 #Adjacency matrix
 adj_matrix = []
 def get_coordinates(filename):
@@ -157,6 +157,20 @@ def find_clustering_coeff(i,graphdict):
 	if length > 1:
 		clustering_coeff.append(float(float(cnt)/(float(length)*float(length-1))))
 
+def find_clustering_coeff_random(i,graph):
+	cnt = 0
+	if i not in graph.keys():
+		return
+	length = len(graph[i])
+	for nodes in graph[i]:
+		for subnodes in graph[nodes]:
+			if subnodes in graph[i]:
+				cnt += 1
+	if length > 1:
+		clustering_coeff_random.append(float(float(cnt)/(float(length)*float(length-1))))
+
+
+
 def average_clustering_coeff():
 	total = 0
 	for i in clustering_coeff:
@@ -203,6 +217,27 @@ def calculate_clust_coeff_distribution(graph):
 			clust_coeff_distr.append(float(float(clust_coeff_sum)/float(nodes)))
 			print str(k) + "\t\t" + str(float(float(clust_coeff_sum)/float(nodes)))
 	#return clust_coeff_distr
+
+
+def calculate_clust_coeff_distribution_random(graph):
+	clust_coeff_distr = []
+	nodes = 0
+	print "DEGREE\t\tCLUSTERING COEFF DISTR\n\n"
+	clust_coeff_sum = 0
+	for k in range(2,16):
+		clust_coeff_sum = 0
+		for i in range(1,len(names)+1):
+			if i in graph.keys():
+				if len(graph[i]) == k:
+					nodes += 1
+					if i-1 < len(clustering_coeff):
+						clust_coeff_sum += float(clustering_coeff_random[i-1])
+		if nodes == 0:
+			clust_coeff_distr.append(0)
+			print str(k) + "\t\t" + str(0)
+		else:
+			clust_coeff_distr.append(float(float(clust_coeff_sum)/float(nodes)))
+			print str(k) + "\t\t" + str(float(float(clust_coeff_sum)/float(nodes)))
 
 
 def closeness(nodes_closeness):
@@ -308,19 +343,22 @@ def main():
 	print "For laplacian matrix\nLargest eigen value = " + str(lap_value[len(names)-1])
 	print "\nCorresponding eigen vector = " + str(lap_vec[len(names)-1])"""
 	random_graph = copy.deepcopy(graphdict)
-	print graphdict
+	#print graphdict
 	print "\n\n"
 	random_graph2 = get_random_graph_2(random_graph)
-	print random_graph2
+	#print random_graph2
 	print "\n\n"
-	print graphdict
+	#print graphdict
+	for i in range(len(names)+1):
+		find_clustering_coeff_random(i+1,random_graph2)
 
-	
+
+	print clustering_coeff_random
 	print "degree dist for random graph = \n"
 	calculate_degree_distribution(random_graph2)
 	
 	print "clustering coeff dist for random graph = \n"
-	calculate_clust_coeff_distribution(random_graph2)
+	calculate_clust_coeff_distribution_random(random_graph2)
 
 
 
