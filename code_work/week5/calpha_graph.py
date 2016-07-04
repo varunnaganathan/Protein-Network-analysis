@@ -305,16 +305,6 @@ def main():
 	print "edges = " + str(find_number_edges(graphdict))
 	print "average shortest path = " + str(shortest_path())
 	print "\n\n"
-
-	#Printing the betwenness closeness n readable form
-	for i in range(len(num_short_paths)):
-		print str(i+1) + "\t\t" + str(num_short_paths[i])
-
-	print "\n\n\n"
-	#Printing the closeness centrality in readable form
-	closeness(nodes_closeness)
-	for i in range(len(nodes_closeness)):
-		print str(i+1) + "\t\t" + str(nodes_closeness[i]) 
 	"""print "Do you wish to calculate degree distribution?\nEnter 1 to calculate\n"
 	deg_dist = input()
 	if deg_dist == 1:
@@ -335,11 +325,11 @@ def main():
 		closeness(nodes_closeness)
 		print nodes_closeness
 	print "\n\n\n"""
-	#print "degree dist for protein graph = \n"
-	#calculate_degree_distribution(graphdict)
+	print "degree dist for protein graph = \n"
+	calculate_degree_distribution(graphdict)
 
-	#print "clustering coeff dist for protein graph = \n"
-	#calculate_clust_coeff_distribution(graphdict)
+	print "clustering coeff dist for protein graph = \n"
+	calculate_clust_coeff_distribution(graphdict)
 
 	"""adj_matrix = get_zero_matrix()
 	deg_matrix = get_zero_matrix()
@@ -351,7 +341,7 @@ def main():
 	print "For adjacency matrix\nLargest eigen value = " + str(adj_value[len(names)-1])
 	print "\nCorresponding eigen vector = " + str(adj_vec[len(names)-1])
 	print "For laplacian matrix\nLargest eigen value = " + str(lap_value[len(names)-1])
-	print "\nCorresponding eigen vector = " + str(lap_vec[len(names)-1])
+	print "\nCorresponding eigen vector = " + str(lap_vec[len(names)-1])"""
 	random_graph = copy.deepcopy(graphdict)
 	#print graphdict
 	print "\n\n"
@@ -362,11 +352,13 @@ def main():
 	for i in range(len(names)+1):
 		find_clustering_coeff_random(i+1,random_graph2)
 
+
+	print clustering_coeff_random
 	print "degree dist for random graph = \n"
 	calculate_degree_distribution(random_graph2)
 	
 	print "clustering coeff dist for random graph = \n"
-	calculate_clust_coeff_distribution_random(random_graph2)"""
+	calculate_clust_coeff_distribution_random(random_graph2)
 
 
 
